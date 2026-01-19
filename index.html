@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>For You — Khuda Jaane </title>
+  <style>
+    :root{
+      --bg:#071422; /* deep midnight teal */
+      --card: rgba(255,255,255,0.03);
+      --accent:#ff7aa2; /* warm pink */
+      --accent2:#ffd86b; /* golden */
+      --text:#f5f7f9;
+      --muted:rgba(245,247,249,0.7);
+      --note:#9be7ff;
+      --glass: rgba(255,255,255,0.04);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background: radial-gradient(800px 400px at 10% 20%, rgba(255,122,162,0.04), transparent), radial-gradient(600px 300px at 90% 80%, rgba(255,216,107,0.03), transparent), var(--bg); color:var(--text); padding:36px; -webkit-font-smoothing:antialiased}
+
+    .wrap{max-width:1100px;margin:0 auto;position:relative;z-index:2}
+
+    header{display:flex;align-items:center;gap:16px;margin-bottom:26px}
+    .badge{width:72px;height:72px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#08101a;font-size:20px;box-shadow:0 12px 30px rgba(0,0,0,0.5)}
+    header h1{font-size:22px}
+    header p{color:var(--muted);font-size:13px}
+
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:start}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:22px;border-radius:14px;border:1px solid var(--glass);box-shadow:0 12px 40px rgba(2,6,18,0.6)}
+
+    .intro h2{font-size:20px;margin-bottom:8px}
+    .intro p{color:var(--muted);line-height:1.6}
+
+    .photo{position:relative;height:420px;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, rgba(255,122,162,0.06), rgba(155,231,255,0.03))}
+    .photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s cubic-bezier(.2,.9,.3,1)}
+    .photo:hover img{transform:scale(1.04) rotate(.4deg)}
+
+    .vinyl{width:140px;height:140px;border-radius:50%;background:radial-gradient(circle at 35% 30%, rgba(255,255,255,0.06), rgba(0,0,0,0.8));display:flex;align-items:center;justify-content:center;border:8px solid rgba(0,0,0,0.6);box-shadow:0 8px 24px rgba(0,0,0,0.6);margin-bottom:12px}
+    .vinyl .center{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--note));display:flex;align-items:center;justify-content:center;font-weight:800;color:#08101a}
+    .spin{animation:spin 8s linear infinite}
+    @keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+
+    .notes{position:absolute;inset:0;pointer-events:none}
+    .note{position:absolute;font-size:16px;opacity:.95}
+
+    /* waveform-ish bars */
+    .wave{display:flex;gap:6px;align-items:end;height:60px;padding:8px}
+    .w{width:10px;background:linear-gradient(180deg,var(--note),var(--accent));border-radius:6px;animation:wave 1s ease-in-out infinite}
+    .w:nth-child(1){animation-duration:.9s}
+    .w:nth-child(2){animation-duration:.6s}
+    .w:nth-child(3){animation-duration:1.2s}
+    .w:nth-child(4){animation-duration:.8s}
+    .w:nth-child(5){animation-duration:1.05s}
+    @keyframes wave{0%{height:10px}50%{height:52px}100%{height:10px}}
+
+    .muted{color:var(--muted)}
+
+    .reveal-area{display:flex;gap:12px;align-items:center;margin-top:12px}
+    .btn{background:linear-gradient(90deg,var(--accent),var(--accent2));border:none;padding:12px 16px;border-radius:12px;color:#08101a;font-weight:800;cursor:pointer;box-shadow:0 8px 26px rgba(0,0,0,0.45);transition:transform .18s}
+    .btn:active{transform:translateY(2px)}
+    .msgbox{min-height:80px;padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);display:flex;align-items:center}
+
+    section{margin-top:18px}
+    h3.section{font-size:18px;margin-bottom:8px}
+    .poem{color:var(--muted);line-height:1.7}
+
+    footer{margin-top:30px;color:var(--muted);font-size:13px;text-align:center}
+
+    /* floating sparkle */
+    .spark{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--accent);filter:blur(6px);opacity:.6}
+
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .photo{height:320px}
+      .vinyl{margin:14px auto}
+    }
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="badge">JY</div>
+      <div>
+        <h1>For the one I met yesterday — <span style="color:var(--accent)">Khuda Jaane</span></h1>
+        <p class="muted">A soft, romantic fanpage for my Crush Deepshikha</p>
+      </div>
+    </header>
+
+    <main>
+      <div class="hero">
+        <div class="card intro">
+          <div style="display:flex;gap:14px;align-items:center">
+            <div class="vinyl spin" aria-hidden="true"><div class="center">♥</div></div>
+            <div>
+              <h2>for you — a little ocean of sound</h2>
+              <p class="muted">This page is a gentle space inspired by "Khuda Jaane" by Vishal, KK & Shilpa Rao — slow, melodic, and full of warmth. It's music-shaped: easy to scroll, with small surprises for you to find.</p>
+            </div>
+          </div>
+
+          <section>
+            <h3 class="section">Wwhat i thought when i understood the song</h3>
+            <p class="poem muted">It’s the kind of song that doesn’t rush—it walks slowly, hand in hand with your feelings. Just like i wanna walk with you holding your hands in your good times as well as bad times i always wanna support you and be available to you cuz presence is very important in a relationship. </p>
+          </section>
+
+          <section>
+            <h3 class="section">A tiny interactive box</h3>
+            <p class="muted">Click the button to reveal small lines i wrote for you deepshi</p>
+
+            <div class="reveal-area">
+              <button class="btn" id="revealBtn">Reveal next</button>
+              <div class="msgbox" id="msgBox">Press Reveal to show the first message.</div>
+            </div>
+          </section>
+
+          <section>
+            <h3 class="section">Sound & motion</h3>
+            <p class="muted">Animated waveform bars below respond like a heartbeat.just like my heart beats when i talk with you...man i love talking to you but please forgive me if i say silly things hehe.</p>
+            <div class="wave" aria-hidden="true">
+              <div class="w" style="height:18px"></div>
+              <div class="w" style="height:28px"></div>
+              <div class="w" style="height:44px"></div>
+              <div class="w" style="height:36px"></div>
+              <div class="w" style="height:22px"></div>
+            </div>
+          </section>
+
+          <section>
+            <h3 class="section">A long note for scrolling</h3>
+            <div class="poem muted">I kept thinking about why do i have feelings for you? why do i want this whatever is going between us to last as long as possible? well i still really dont have answers but i really care about you. but 1 thing im sure our minds are very alike and our bond is very real. I wanna teach you i wanna learn from you and grow together.I was actually kinda depressed after my breakup 2 months ago i wanted to talk about it with someone but i never could with my friends, but with u i felt so at ease so happy so relaxed that i shared my past with you.Thanks for not judgeing me and actually giving me a chance ill make sure your panties get wet not your eyes thats a commitment i wanna make. </div>
+          </section>
+
+        </div>
+
+        <aside class="card photo">
+          <!-- Image file: walters.jpej - place it in the same folder as this HTML -->
+          <img src="deepshi.jpeg" alt="Singer / photo placeholder - add walters.jpej in the folder" onerror="this.style.filter='grayscale(40%) brightness(.85)';this.alt='Add walters.jpej to show the image'">
+        </aside>
+      </div>
+
+      <!-- bigger expressive section -->
+      <section class="card">
+        <h3 class="section">When the chorus is just us</h3>
+        <p class="poem muted" style="margin-bottom:10px"> I love this song a lot as well i can relate to it as well.In the end i have a question for you. that will you give me a chance to be someone more than friends? this is not a proper proposal dw i will do that later i just need more time. </p>
+       
+      </section>
+
+     
+
+    </main>
+
+    <footer>Made with lots of love by Joyesh ❤️ i expect a kiss in return pleaseeeeeeeeee</footer>
+  </div>
+
+  <!-- floating musical notes and interactive script -->
+  <script>
+    // notes factory
+    const root = document.createElement('div');root.className='notes';document.body.appendChild(root);
+    function rand(min,max){return Math.random()*(max-min)+min}
+    function makeNote(){
+      const n = document.createElement('div');n.className='note';
+      const glyphs = ['♪','♫','♬'];
+      n.textContent = glyphs[Math.floor(rand(0,glyphs.length))];
+      n.style.left = rand(2,96)+'%';n.style.top = rand(60,98)+'%';n.style.fontSize = rand(12,28)+'px';n.style.opacity = rand(.6,1);
+      document.body.appendChild(n);
+      n.animate([
+        {transform:'translateY(0) rotate(0)', opacity: n.style.opacity},
+        {transform:'translateY(-140vh) rotate(360deg)', opacity:0}
+      ],{duration:rand(6000,12000),easing:'linear'}).onfinish = ()=>n.remove();
+    }
+    setInterval(()=>{if(document.visibilityState==='visible') makeNote();},700);
+
+    // reveal messages
+    const lines = [
+      "When you smile, the song gets a new chorus.",
+      "I love you more in quiet rooms than grand gestures.",
+      "dw if your past was not ideal, ill make your present a gift.",
+      "are you Harambe's enclosure? cuz i wanna drop a kid inside you.",
+      "Let's make a playlist that only we understand."
+    ];
+    let idx = 0;
+    const btn = document.getElementById('revealBtn');
+    const box = document.getElementById('msgBox');
+    btn.addEventListener('click', ()=>{
+      box.style.opacity=0;setTimeout(()=>{box.innerHTML = lines[idx];box.style.opacity=1;idx=(idx+1)%lines.length;},240);
+      // small confetti hearts
+      burst();
+    });
+
+    function burst(){
+      for(let i=0;i<12;i++){
+        const p = document.createElement('div');p.textContent='❤';p.style.position='absolute';p.style.left=(window.innerWidth/2 + rand(-80,80))+'px';p.style.top=(window.innerHeight/2 + rand(-20,20))+'px';p.style.fontSize=rand(10,20)+'px';p.style.opacity=1;document.body.appendChild(p);
+        p.animate([{transform:'translateY(0) scale(1)',opacity:1},{transform:'translateY('+(-rand(120,420))+'px) scale(.6)',opacity:0}],{duration:900+rand(0,500),easing:'cubic-bezier(.2,.8,.2,1)'}).onfinish=()=>p.remove();
+      }
+    }
+
+    // subtle randomized wave heights
+    const bars = document.querySelectorAll('.w');
+    setInterval(()=>{bars.forEach(b=>{b.style.height = Math.floor(rand(10,52))+'px';});},380);
+
+    // accessibility live region
+    const live = document.createElement('div');live.setAttribute('aria-live','polite');live.style.position='fixed';live.style.left='-9999px';document.body.appendChild(live);
+    btn.addEventListener('click', ()=>{live.textContent='New love note revealed.'});
+
+    // handle missing image overlay
+    const img = document.querySelector('.photo img');
+    img.addEventListener('error', ()=>{
+      const overlay = document.createElement('div');overlay.style.position='absolute';overlay.style.inset='0';overlay.style.display='flex';overlay.style.alignItems='center';overlay.style.justifyContent='center';overlay.style.flexDirection='column';overlay.style.background='linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00))';overlay.style.color='var(--muted)';overlay.style.backdropFilter='blur(2px)';
+      overlay.innerHTML = '<div style="font-size:18px;font-weight:700;margin-bottom:8px">Add walters.jpej</div><div style="font-size:13px">Place a file named <code>walters.jpej</code> beside this HTML file to replace this placeholder</div>';
+      document.querySelector('.photo').appendChild(overlay);
+    });
+
+  </script>
+
+ 
+</body>
+</html>
